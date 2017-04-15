@@ -6,6 +6,7 @@
             android:id="@+id/action_new"
             android:icon="@android:drawable/ic_menu_add"
             android:title="@string/new_task"
+            android:visible="true"
             app:showAsAction="ifRoom"/>
     
 </menu>
