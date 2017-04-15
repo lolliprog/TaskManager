@@ -10,6 +10,8 @@ import com.example.inquallity.taskmanager.R;
 import com.example.inquallity.taskmanager.content.Task;
 import com.example.inquallity.taskmanager.view.TaskListItem;
 
+import java.util.ArrayList;
+
 /**
  * Created by Inquallity on 10-Apr-17.
  */
@@ -21,6 +23,14 @@ public class TaskListAdapter extends ArrayAdapter <Task> {
     public TaskListAdapter(Context context) {
         super(context, R.layout.li_task_list);
         mInflater = LayoutInflater.from(context);
+
+        for (int i = 0; i < 10; i++) {
+            Task task = new Task();
+            task.setName("Task # "+ i);
+            task.setCreatedAt(System.currentTimeMillis());
+            add(task);
+        }
+
     }
 
 
@@ -31,6 +41,7 @@ public class TaskListAdapter extends ArrayAdapter <Task> {
         }
         final TaskListItem item = (TaskListItem) convertView;
         item.bindModel(getItem(position));
+
         return convertView;
     }
 }

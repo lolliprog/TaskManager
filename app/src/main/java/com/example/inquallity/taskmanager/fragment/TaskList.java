@@ -2,15 +2,20 @@ package com.example.inquallity.taskmanager.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.example.inquallity.taskmanager.R;
 import com.example.inquallity.taskmanager.content.Task;
 import com.example.inquallity.taskmanager.widget.TaskListAdapter;
+import com.example.inquallity.taskmanager.widget.TaskListAdapter2;
 
 /**
  * Created by Inquallity on 10-Apr-17.
@@ -34,10 +39,17 @@ public class TaskList extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mListAdapter= new TaskListAdapter(getActivity());
         mListView.setAdapter(mListAdapter);
+    }
 
-        final Task task = new Task();
-        task.setCreatedAt(0);
-        task.setName("First task");
-        mListAdapter.add(task);
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.task_list,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 }
